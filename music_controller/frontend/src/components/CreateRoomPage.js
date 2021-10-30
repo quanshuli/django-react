@@ -59,6 +59,7 @@ export default class CreateRoomPage extends Component {
             Create A Room
           </Typography>
         </Grid>
+            
         <Grid item xs={12} align="center">
           <FormControl component="fieldset">
             <FormHelperText>
