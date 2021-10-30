@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Button } from '@material-ui/core/Button'
-import { Grid } from '@material-ui/core'
+import { Button } from '@material-ui/core'
+import { Grid, TextField } from '@material-ui/core'
 import { Typography } from '@material-ui/core';
 import { FormHelperText } from '@material-ui/core';
 import { FormControl } from '@material-ui/core';
@@ -16,7 +16,7 @@ export default class CreateRoomPage extends Component{
     }
 
     render(){
-        return (<Grid container spaceing={1}>
+        return (<Grid container spacing={1}>
             <Grid item xs={12} align='center'>
                 <Typography component='h4' variant='h4'>
                     Create A Room
@@ -39,10 +39,36 @@ export default class CreateRoomPage extends Component{
                             control={<Radio color='secondary' />}
                             label='No Control'
                             labelPlacement='bottom'
-                        />
-                            
+                        />   
                     </RadioGroup>
                 </FormControl>
+            </Grid>
+            <Grid item xs={12} align='center'>
+                <FormControl>
+                    <TextField required={true} 
+                               type='number'
+                               defaultValue={this.defaultVotes}
+                               inputProps={{
+                                    min: 1,
+                                    style: { textAlign: 'center'},
+                               }}
+                    />
+                    <FormHelperText>
+                        <div align='center'>Votes Required to Skip Song</div>
+                    </FormHelperText>
+                </FormControl>
+            </Grid>
+            <Grid item xs={12} align='center'>
+                <Button color='secondary' variant='contained' to='/'
+                        component={Link}>
+                    Create A Room
+                </Button>
+            </Grid>
+            <Grid item xs={12} align='center'>
+                <Button color='primary' variant='contained' to='/'
+                        component={Link}>
+                    Back
+                </Button>
             </Grid>
         </Grid>);
     }
