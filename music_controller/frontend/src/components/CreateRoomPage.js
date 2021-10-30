@@ -11,6 +11,7 @@ import { RadioGroup } from '@material-ui/core';
 import { FormControlLabel } from '@material-ui/core';
 
 export default class CreateRoomPage extends Component{
+    defaultVotes = 2;
     constructor(props){
         super(props);
         this.state = {
@@ -30,6 +31,7 @@ export default class CreateRoomPage extends Component{
     }
 
     handelGuestCanPauseChange(e){
+    //handelGuestCanPauseChange = (e) => { 
         this.setState({
             guestCanPause: e.target.value === 'true' ? true : false,
         });
@@ -63,8 +65,14 @@ export default class CreateRoomPage extends Component{
                             Guest Control of Playback State
                         </div>
                     </FormHelperText>
-                    <RadioGroup row defaultValue='true'
-                                    onChange={this.handelGuestCanPauseChange}>
+                    
+                    <RadioGroup 
+                        row 
+                        defaultValue='true'
+                        onChange={
+                            e => this.handelGuestCanPauseChange(e)}
+                        value={this.state.guestCanPause}
+                    >
                         <FormControlLabel value='true' 
                             control={<Radio color='primary' />}
                             label='Play/Pause'
@@ -76,10 +84,13 @@ export default class CreateRoomPage extends Component{
                             labelPlacement='bottom'
                         />   
                     </RadioGroup>
+                    
                 </FormControl>
             </Grid>
+            
             <Grid item xs={12} align='center'>
                 <FormControl>
+                    
                     <TextField required={true} 
                                onChange={this.handleVotesChange}
                                type='number'
@@ -89,11 +100,13 @@ export default class CreateRoomPage extends Component{
                                     style: { textAlign: 'center'},
                                }}
                     />
+                    
                     <FormHelperText>
                         <div align='center'>Votes Required to Skip Song</div>
                     </FormHelperText>
                 </FormControl>
             </Grid>
+            
             <Grid item xs={12} align='center'>
                 <Button color='secondary' variant='contained'
                         onClick={this.handelRoomButtonPressed}
