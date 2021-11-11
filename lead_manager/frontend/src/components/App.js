@@ -1,8 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { ReactDOM, render } from "react-dom";
 
+import Header from "./layout/Header";
+import Dashboard from "./leads/Dashboard";
+
 const App = () => {
-  return <h1>React App</h1>;
+  return (
+    <Fragment>
+      <Header />
+      <Dashboard />
+    </Fragment>
+  );
 };
 
 export default App;
