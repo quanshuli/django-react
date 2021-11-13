@@ -12,3 +12,15 @@ export const getLeads = () => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const addLead = (lead) => (dispatch) => {
+  axios
+    .post("/api/leads/")
+    .then((res) => {
+      dispatch({
+        type: GET_LEADS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
